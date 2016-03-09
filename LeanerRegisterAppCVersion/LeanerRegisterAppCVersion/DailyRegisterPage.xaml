@@ -8,19 +8,19 @@
         <Label Content="Date *" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
         <Label Content="Mentor *" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="125"/>
         <ComboBox x:Name="cmbbxMentornames" ItemsSource="{Binding mentorNames}" HorizontalAlignment="Left"  Margin="10,189,0,0" VerticalAlignment="Top" Width="179" Height="38" />
-        <TextBox x:Name="txtTrainingOn" HorizontalAlignment="Left" Height="80" Margin="10,294,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="179"/>
+        <TextBox x:Name="txtTrainingOn" HorizontalAlignment="Left" Height="80" Margin="10,294,0,0" TextWrapping="Wrap" ToolTip="Commment on the training topic or content" VerticalAlignment="Top" Width="179"/>
         <Label Content="Training On" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button Content="Cancel"  Background="Transparent" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="218,294,0,0" VerticalAlignment="Top" Width="130" Height="80"/>
-        <Button Content="Save" Background="Transparent" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="462,294,0,0" VerticalAlignment="Top" Width="115" Height="80"/>
+        <Button x:Name="btnCancel" Content="Cancel"  Background="Transparent" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="218,342,0,0" VerticalAlignment="Top" Width="130" Height="32" Click="btnCancel_Click"/>
+        <Button x:Name="btnSave" Content="Save" Background="Transparent" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="462,342,0,0" VerticalAlignment="Top" Width="115" Height="32" Click="btnSave_Click"/>
 
 
-        <DataGrid x:Name="dtgrd" HorizontalAlignment="Left" Margin="218,63,0,0" VerticalAlignment="Top" Height="215" Width="359" AutoGenerateColumns="False" FontSize="20" FontWeight="Bold">
+        <DataGrid x:Name="dtgNamesAndHours" HorizontalAlignment="Left" Margin="218,63,0,0" VerticalAlignment="Top" Height="274" Width="359" AutoGenerateColumns="False" FontSize="20" FontWeight="Bold">
             <DataGrid.Columns>
-                <DataGridComboBoxColumn x:Name="dgcbxNames" Header="Name" SelectedValueBinding="{Binding Path=Name, Mode=TwoWay}"
+                <DataGridComboBoxColumn x:Name="dgcmbxMenteeNames" Header="Name" SelectedValueBinding="{Binding Path=Name, Mode=TwoWay}"
                                      Width="180"   DisplayMemberPath="{Binding Name}"/>
-                <DataGridTextColumn x:Name="dtaGrdTxtClmHours" Header="hours" Binding="{Binding Path=Hours, Mode=TwoWay}" Width="180" />
+                <DataGridTextColumn x:Name="dgtcHours" Header="hours" Binding="{Binding Path=Hours, Mode=TwoWay}" Width="180" />
             </DataGrid.Columns>
         </DataGrid>
-        
+
     </Grid>
 </Window>

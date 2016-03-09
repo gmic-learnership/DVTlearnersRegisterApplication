@@ -30,6 +30,18 @@ namespace LeanerRegisterAppCVersion
         private void Window_Activated(object sender, EventArgs e)
         {
             dtpDate.Text = DateTime.Now.ToString();
+            using (TheDailyRegisterDBContext db = new TheDailyRegisterDBContext())
+            {
+                List<Person> selectMentors = (from p in db.Person
+                                              join r in db.Roles on p.RoleID equals r.RoleID
+                                              where r.RoleID == 2
+                                              select p).ToList();
+                foreach (var item in selectMentors)
+                {
+                    // cmbbxMentornames.Items.Clear();
+                    cmbbxMentornames.Items.Add(item.Name + "" + item.LastName);
+                }
+            }
         }
 
         private void dtpDate_CalendarClosed(object sender, RoutedEventArgs e)
@@ -78,9 +90,22 @@ namespace LeanerRegisterAppCVersion
 
                 foreach (var item in menteesnames)
                 {
-                dgcbxNames.ItemsSource = menteesnames;
+                    dtgNamesAndHours.ItemsSource = menteesnames;
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            //save attendance details to respective tables
+            MessageBox.Show("TEST!! data should be saved on the database");
         }
     }
 }
